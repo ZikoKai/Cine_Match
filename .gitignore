@@ -1,0 +1,102 @@
+# ==============================================================================
+# AI & CLAUDE CODE INTERNAL FILES
+# ==============================================================================
+.claude/
+/.claude
+CLAUDE.md
+AGENTS.md
+
+# Generated AI content (large binary files)
+generated_posters/
+enhanced_posters/
+
+# ==============================================================================
+# ENVIRONMENT FILES AND SECRETS
+# ==============================================================================
+.env
+.env.*
+.env*
+!.env.example
+*.pem
+
+# ==============================================================================
+# OS AND IDE CONFIGURATIONS
+# ==============================================================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ==============================================================================
+# LOGS AND RUNTIME FILES
+# ==============================================================================
+*.log
+*.pid
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ==============================================================================
+# JAVASCRIPT / NODE / NEXT.JS / VERCEL
+# ==============================================================================
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js & Vercel
+/.next/
+/out/
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# ==============================================================================
+# PYTHON REGION
+# ==============================================================================
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Type checker and linter caches
+.mypy_cache/
+.ruff_cache/
+.pyright/
+
+# ==============================================================================
+# BUILDS, PACKAGING & PRODUCTION
+# ==============================================================================
+build/
+/build
+dist/
+*.egg-info/
+
+# ==============================================================================
+# TESTS AND COVERAGE
+# ==============================================================================
+.pytest_cache/
+.coverage
+/coverage
+htmlcov/
+
+# ==============================================================================
+# STATIC ASSETS / MISC
+# ==============================================================================
+# Fonts (large static assets — add back if you want to track them)
+fonts/

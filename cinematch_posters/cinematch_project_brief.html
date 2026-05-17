@@ -1,0 +1,195 @@
+
+<style>
+  * { box-sizing: border-box; }
+  .doc { max-width: 680px; font-family: var(--font-sans); color: var(--color-text-primary); padding: 40px 48px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); }
+  .doc-header { border-bottom: 1.5px solid var(--color-border-secondary); padding-bottom: 24px; margin-bottom: 32px; }
+  .doc-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--color-text-tertiary); text-transform: uppercase; margin-bottom: 10px; }
+  .doc-title { font-size: 26px; font-weight: 500; margin: 0 0 6px; line-height: 1.2; }
+  .doc-subtitle { font-size: 14px; color: var(--color-text-secondary); margin: 0 0 20px; }
+  .meta-row { display: flex; gap: 24px; flex-wrap: wrap; }
+  .meta-item { font-size: 12px; color: var(--color-text-secondary); }
+  .meta-item strong { color: var(--color-text-primary); font-weight: 500; }
+  .section-title { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 16px; padding-bottom: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .task { margin-bottom: 28px; }
+  .task-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+  .task-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; margin-top: 1px; }
+  .task-meta { flex: 1; }
+  .task-name { font-size: 15px; font-weight: 500; margin: 0 0 3px; }
+  .task-owner { font-size: 12px; color: var(--color-text-secondary); }
+  .task-owner span { font-weight: 500; color: var(--color-text-primary); }
+  .deliverables { padding-left: 42px; }
+  .deliv-item { display: flex; gap: 10px; padding: 7px 0; border-top: 0.5px solid var(--color-border-tertiary); }
+  .deliv-item:first-child { border-top: none; }
+  .deliv-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .deliv-text { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+  .deliv-text strong { color: var(--color-text-primary); font-weight: 500; }
+  .stack-pills { display: flex; flex-wrap: wrap; gap: 5px; padding-left: 42px; margin-top: 10px; }
+  .pill { font-size: 11px; padding: 2px 9px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); background: var(--color-background-secondary); }
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 28px 0; }
+  .arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+  .arch-cell { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
+  .arch-cell-title { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+  .arch-cell-content { font-size: 13px; color: var(--color-text-primary); }
+  .footer { border-top: 0.5px solid var(--color-border-tertiary); padding-top: 20px; margin-top: 32px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-size: 11px; color: var(--color-text-tertiary); }
+  .status-badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: #EAF3DE; color: #27500A; }
+  @media (prefers-color-scheme: dark) {
+    .status-badge { background: #27500A; color: #C0DD97; }
+  }
+  .t1 { background: #E6F1FB; color: #0C447C; }
+  .t2 { background: #E1F5EE; color: #085041; }
+  .t3 { background: #EEEDFE; color: #3C3489; }
+  .t4 { background: #FAECE7; color: #712B13; }
+  .t5 { background: #F1EFE8; color: #444441; }
+  @media (prefers-color-scheme: dark) {
+    .t1 { background: #0C447C; color: #B5D4F4; }
+    .t2 { background: #085041; color: #9FE1CB; }
+    .t3 { background: #3C3489; color: #CECBF6; }
+    .t4 { background: #712B13; color: #F5C4B3; }
+    .t5 { background: #444441; color: #D3D1C7; }
+  }
+  .d1 { background: #378ADD; }
+  .d2 { background: #1D9E75; }
+  .d3 { background: #7F77DD; }
+  .d4 { background: #D85A30; }
+  .d5 { background: #888780; }
+</style>
+
+<div class="doc">
+
+  <div class="doc-header">
+    <div class="doc-label">Document de projet — Équipe technique</div>
+    <div class="doc-title">CineMatch — Application de recommandation de films</div>
+    <div class="doc-subtitle">Répartition des tâches & livrables attendus par module</div>
+    <div class="meta-row">
+      <div class="meta-item"><strong>Équipe :</strong> 5 membres</div>
+      <div class="meta-item"><strong>Version :</strong> 1.0</div>
+      <div class="meta-item"><strong>Date :</strong> Avril 2026</div>
+      <div class="meta-item"><strong>Statut :</strong> <span class="status-badge">En cours</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Architecture cible</div>
+  <div class="arch-grid">
+    <div class="arch-cell"><div class="arch-cell-title">Frontend</div><div class="arch-cell-content">Next.js 14 — interface utilisateur, auth, pages films</div></div>
+    <div class="arch-cell"><div class="arch-cell-title">Backend</div><div class="arch-cell-content">FastAPI — API REST, orchestration LangChain</div></div>
+    <div class="arch-cell"><div class="arch-cell-title">Base de données</div><div class="arch-cell-content">PostgreSQL + pgvector — métadonnées & embeddings</div></div>
+    <div class="arch-cell"><div class="arch-cell-title">IA & génération</div><div class="arch-cell-content">OpenAI GPT-4o, DALL·E 3, Embeddings API</div></div>
+  </div>
+
+  <hr class="divider">
+  <div class="section-title">Répartition des tâches</div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-num t1">T1</div>
+      <div class="task-meta">
+        <div class="task-name">Pipeline de données — Cleaning & Embeddings</div>
+        <div class="task-owner">Responsable : <span>Membre 1</span></div>
+      </div>
+    </div>
+    <div class="deliverables">
+      <div class="deliv-item"><div class="deliv-dot d1"></div><div class="deliv-text"><strong>Collecte & nettoyage :</strong> récupération du dataset Kaggle Movies, normalisation des champs (titre, genre, synopsis, note, année), suppression des doublons.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d1"></div><div class="deliv-text"><strong>Génération d'embeddings :</strong> vectorisation de chaque synopsis via OpenAI text-embedding-3-small, insertion dans PostgreSQL + pgvector avec index HNSW.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d1"></div><div class="deliv-text"><strong>Pipeline reproductible :</strong> script Python automatisé pour mise à jour et rechargement du dataset sans intervention manuelle.</div></div>
+    </div>
+    <div class="stack-pills">
+      <span class="pill">Python / Pandas</span>
+      <span class="pill">OpenAI Embeddings</span>
+      <span class="pill">PostgreSQL + pgvector</span>
+      <span class="pill">Kaggle Dataset</span>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-num t2">T2</div>
+      <div class="task-meta">
+        <div class="task-name">Génération d'images — Affiches de films</div>
+        <div class="task-owner">Responsable : <span>Membre 2</span></div>
+      </div>
+    </div>
+    <div class="deliverables">
+      <div class="deliv-item"><div class="deliv-dot d2"></div><div class="deliv-text"><strong>Prompt builder :</strong> GPT-4o extrait automatiquement genre, ambiance et époque de chaque film pour construire un prompt artistique générique, contournant les restrictions copyright de DALL·E.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d2"></div><div class="deliv-text"><strong>Génération & stockage :</strong> création des affiches via DALL·E 3 / gpt-image-1, mise en cache sur Cloudflare R2 pour éviter toute régénération inutile.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d2"></div><div class="deliv-text"><strong>Fallback visuel :</strong> en cas de refus de l'API, génération automatique d'une affiche stylisée (titre + couleurs de genre) via Canvas API.</div></div>
+    </div>
+    <div class="stack-pills">
+      <span class="pill">DALL·E 3</span>
+      <span class="pill">GPT-4o</span>
+      <span class="pill">Cloudflare R2</span>
+      <span class="pill">Canvas API</span>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-num t3">T3</div>
+      <div class="task-meta">
+        <div class="task-name">Moteur de recherche & recommandation</div>
+        <div class="task-owner">Responsable : <span>Membre 3</span></div>
+      </div>
+    </div>
+    <div class="deliverables">
+      <div class="deliv-item"><div class="deliv-dot d3"></div><div class="deliv-text"><strong>Recherche hybride :</strong> combinaison full-text search (PostgreSQL tsvector) et recherche vectorielle (cosine similarity pgvector) pour des résultats précis et contextuels.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d3"></div><div class="deliv-text"><strong>Extraction de critères :</strong> GPT-4o analyse le prompt libre de l'utilisateur et extrait genre, année, humeur → filtres SQL dynamiques.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d3"></div><div class="deliv-text"><strong>Ranking & orchestration :</strong> score combiné (similarité vectorielle + note + fraîcheur), orchestré via LangChain pour une recommandation pertinente et ordonnée.</div></div>
+    </div>
+    <div class="stack-pills">
+      <span class="pill">FastAPI</span>
+      <span class="pill">LangChain</span>
+      <span class="pill">pgvector similarity</span>
+      <span class="pill">GPT-4o</span>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-num t4">T4</div>
+      <div class="task-meta">
+        <div class="task-name">Frontend complet & authentification utilisateurs</div>
+        <div class="task-owner">Responsable : <span>Membre 4</span></div>
+      </div>
+    </div>
+    <div class="deliverables">
+      <div class="deliv-item"><div class="deliv-dot d4"></div><div class="deliv-text"><strong>Design & pages :</strong> interface complète — /movies (catalogue), /recommenderFilms (chat de recommandation), /movie/:id (détail + affiche générée). Design system cohérent Tailwind CSS.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d4"></div><div class="deliv-text"><strong>Authentification :</strong> système complet login/register avec NextAuth.js — email/password + OAuth Google — sécurisé par JWT côté FastAPI.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d4"></div><div class="deliv-text"><strong>Performance & UX :</strong> streaming des résultats en temps réel (SSE), skeleton loaders, lazy loading des affiches, CDN pour les assets, historique des recherches utilisateur.</div></div>
+    </div>
+    <div class="stack-pills">
+      <span class="pill">Next.js 14</span>
+      <span class="pill">Tailwind CSS</span>
+      <span class="pill">NextAuth.js</span>
+      <span class="pill">SSE streaming</span>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-num t5">T5</div>
+      <div class="task-meta">
+        <div class="task-name">Intégration globale de l'application — Jaril</div>
+        <div class="task-owner">Responsable : <span>Jaril</span></div>
+      </div>
+    </div>
+    <div class="deliverables">
+      <div class="deliv-item"><div class="deliv-dot d5"></div><div class="deliv-text"><strong>Assemblage des modules :</strong> Jaril récupère chaque module livré (pipeline, images, moteur, frontend) et les intègre dans une application unifiée, cohérente et pleinement fonctionnelle.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d5"></div><div class="deliv-text"><strong>API Gateway FastAPI :</strong> définition et validation des routes /prompteUser, /movies, /recommenderFilms — contrats d'API TypeScript auto-générés (OpenAPI → ts-rest) pour garantir la cohérence front/back.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d5"></div><div class="deliv-text"><strong>Orchestration LangGraph :</strong> coordination de l'agent images et de l'agent recommandation en parallèle, avec gestion des erreurs et fallbacks à chaque étape.</div></div>
+      <div class="deliv-item"><div class="deliv-dot d5"></div><div class="deliv-text"><strong>Tests & déploiement :</strong> tests end-to-end Playwright sur les parcours critiques, logs structurés, health checks, déploiement final de l'application complète.</div></div>
+    </div>
+    <div class="stack-pills">
+      <span class="pill">FastAPI + Pydantic</span>
+      <span class="pill">LangGraph</span>
+      <span class="pill">OpenAPI / ts-rest</span>
+      <span class="pill">Playwright</span>
+      <span class="pill">Docker</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">CineMatch · Document confidentiel · Équipe technique 2026</div>
+    <div class="status-badge">v1.0 — Approuvé</div>
+  </div>
+
+</div>
